@@ -101,12 +101,14 @@ function renderStudentOnDom(studentObj){
         text: 'DELETE',
         on: {
             'click': function(){
-                $(this).parents('tr').remove();
+                removeStudent(studentObj);
             }
         }
     });
+    deleteButton[0].this = this;
     operations.append(deleteButton)
-    var newTableRow = $('<tr>').append(studentAddName, studentAddCourse, studentAddGrade, operations);
+    var newTableRow = $('<tr>').addClass("student").append(studentAddName, studentAddCourse, studentAddGrade, operations);
+    studentObj.displayRow = newTableRow;
     $('.student-list tbody').append(newTableRow);
 }
 
@@ -117,6 +119,7 @@ function renderStudentOnDom(studentObj){
  * @calls renderStudentOnDom, calculateGradeAverage, renderGradeAverage
  */
 function updateStudentList(array){
+    $(".student").remove();
     for(var i = 0; i < array.length; i++){
         console.log(array[i]);
         renderStudentOnDom(array[i]);
@@ -150,7 +153,14 @@ function renderGradeAverage(averageGrade){
     $('.avgGrade').text(averageGrade);
 }
 
+function removeStudent(student){
+    var studentIndex = student_array.indexOf(student);
+    student_array.splice(studentIndex, 1);
+    student.displayRow.remove();
+    renderGradeAverage(calculateGradeAverage(student_array));
+}
 
+// deleteButton[0].
 
 
 

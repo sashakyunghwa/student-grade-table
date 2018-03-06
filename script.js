@@ -21,6 +21,7 @@ $(document).ready(initializeApp);
  */
 
 var student_array = [];
+var globalData;
 
 /***************************************************************************************************
 * initializeApp 
@@ -39,8 +40,9 @@ function initializeApp(){
 *     
 */
 function addClickHandlersToElements(){
-    $('.btn-success').on('click', handleAddClicked);
+    $('#add').on('click', handleAddClicked);
     $('.btn-default').on('click', handleCancelClick);
+    $('#getData').on('click', handleGetDataClick);
 }
 
 /***************************************************************************************************
@@ -160,7 +162,27 @@ function removeStudent(student){
     renderGradeAverage(calculateGradeAverage(student_array));
 }
 
-// deleteButton[0].
+function handleGetDataClick(){
+    console.log("handle data click call");
+    $.ajax({
+        dataType: 'json',
+        method: 'post',
+        url: 'http://s-apis.learningfuze.com/sgt/get',
+        data: {'api_key': 'T5a2qipvnG'
+        },
+        success: function(data){
+            // console.log("data from server:", data);
+            globalData = data;
+            for(var i = 0; i < globalData.data.length; i++){
+                // console.log("student objects:", globalData.data[i]);
+                student_array.push(globalData.data[i]);
+            };
+            updateStudentList(student_array);
+        },
+    });
+
+}
+
 
 
 

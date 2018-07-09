@@ -98,6 +98,26 @@ function renderStudentOnDom(studentObj){
     var studentAddCourse = $('<td>').text(studentObj.course);
     var studentAddGrade = $('<td>').text(studentObj.grade);
     var operations = $('<td>');
+    var newRow =$('<tr>');
+    var updateButton = $('<button>', {
+        'class': 'btn btn-primary update-button',
+        text: 'UPDATE',
+        on: {
+            'click': function(){
+                $('.new-name').val(studentObj.name);
+                $('.new-course').val(studentObj.course);
+                $('.new-grade').val(studentObj.grade);
+                $('#updateModal').modal('show');
+                // updateStudent(studentObj);
+                updateStudentList(student_array);
+            }
+           
+        }
+       
+    });
+    // operations.append(updateButton, deleteButton);
+    // newRow.append(studentAddName, studentAddCourse, studentAddGrade, operations);
+    // $('.student-list')
     var deleteButton = $('<button>', {
         'class': 'btn btn-danger',
         text: 'DELETE',
@@ -108,7 +128,7 @@ function renderStudentOnDom(studentObj){
         }
     });
     deleteButton[0].this = this;
-    operations.append(deleteButton)
+    operations.append(updateButton, deleteButton)
     var newTableRow = $('<tr>').addClass("student").append(studentAddName, studentAddCourse, studentAddGrade, operations);
     studentObj.displayRow = newTableRow;
     $('.student-list tbody').append(newTableRow);
@@ -183,6 +203,51 @@ function handleGetDataClick(){
 
 }
 
+
+// function updateStudentCheck(studentObj) { 
+//     $('.update-student-button').off();
+//     $('.new-student-icon').popover('');
+//     $('.new-course-icon').popover('hide');
+//     $('.new-grade-icon').popover('hide');
+//     $('.update-student-button').click(() => { 
+//           var newStudentName = $('.new-name').val();
+//           var newCourse = $('.new-course').val();
+//           var newStudentGrade = $('.new-grade').val();
+
+//           var newNameValid = null;
+//           var newCourseValid = null;
+//           var newGradeValid = null;
+
+//           if(newStudentName.length < 2 || newStudentName === '') {
+//                 $('.new-student-icon').popover('show');
+//                 newNameValid = false;
+//           } else {
+//                 $('.new-student-icon').popover('hide');
+//                 newNameValid = true;
+//           };
+
+//           if(newCourse.length < 2 || newCourse === '') {
+//                 $('.new-course-icon').popover('show');
+//                 newCourseValid = false;
+//           } else {
+//                 $('.new-course-icon').popover('hide');
+//                 newCourseValid = true;
+//           };
+
+//           if(isNaN(newStudentGrade) || newStudentGrade === '' || newStudentGrade > 100) {
+//                 $('.new-grade-icon').popover('show');
+//                 newGradeValid = false;
+//           } else {
+//                 $('.new-grade-icon').popover('hide');
+//                 newGradeValid = true;
+//           };
+
+//           if(newNameValid && newCourseValid && newGradeValid) {
+//                 updateStudent(studentObj);
+//                 $('#updateModal').modal('hide'); 
+//           };
+//     });
+// };
 
 
 

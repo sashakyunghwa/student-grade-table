@@ -1,0 +1,45 @@
+.label-default {
+    background-color: #3e3f3a;
+}
+
+.label {
+    font-weight: bold;
+}
+
+
+.submit-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.data-button {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn {
+    border: none;
+    font-size: 11px;
+    line-height: 22px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.btn-success {
+    color: #ffffff;
+    background-color: #93c54b;
+}
+
+.btn-default {
+    color: #ffffff;
+    background-color: #3e3f3a;
+}
+
+.update-button {
+    margin-right: 2vh;
+}
+
+.btn-primary {
+    background-color: #325d88;
+}
+

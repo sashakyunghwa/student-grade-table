@@ -100,15 +100,14 @@ function renderStudentOnDom(studentObj){
     var operations = $('<td>');
     var newRow =$('<tr>');
     var updateButton = $('<button>', {
-        'class': 'btn btn-primary update-button',
+        'class': 'btn btn-primary',
         text: 'UPDATE',
         on: {
-            'click': function(){
+            click: function(){
                 $('.new-name').val(studentObj.name);
                 $('.new-course').val(studentObj.course);
                 $('.new-grade').val(studentObj.grade);
                 $('#updateModal').modal('show');
-                // updateStudent(studentObj);
                 updateStudentList(student_array);
             }
            
@@ -122,7 +121,7 @@ function renderStudentOnDom(studentObj){
         'class': 'btn btn-danger',
         text: 'DELETE',
         on: {
-            'click': function(){
+            click: function(){
                 removeStudent(studentObj);
             }
         }
@@ -192,6 +191,7 @@ function handleGetDataClick(){
         },
         success: function(data){
             // console.log("data from server:", data);
+            debugger;
             globalData = data;
             for(var i = 0; i < globalData.data.length; i++){
                 // console.log("student objects:", globalData.data[i]);

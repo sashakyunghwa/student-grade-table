@@ -43,3 +43,47 @@
     background-color: #325d88;
 }
 
+@media screen and (min-width: 320px) {
+    .student-grade-table-text {
+        font-size: 17px;
+    }
+    #grade-average-text {
+        font-size: 13px;
+    }
+    #add-student-text {
+        font-size: 16px;
+    }
+    .grade-table-text {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .student-grade-table-text {
+        font-size: 17px;
+    }
+    #grade-average-text {
+        font-size: 13px;
+    }
+    #add-student-text {
+        font-size: 16px;
+    }
+    .grade-table-text {
+        font-size: 10px;
+    }
+}
+
+@media screen and (min-width: 360px) {
+    .student-grade-table-text {
+        font-size: 19px;
+    }
+    #grade-average-text {
+        font-size: 14px;
+    }
+    #add-student-text {
+        font-size: 18px;
+    }
+    .grade-table-text {
+        font-size: 11px;
+    }
+}

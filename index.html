@@ -95,12 +95,7 @@
                             </span>
                             <input type="text" class="form-control new-grade" placeholder="Student Grade">
                     </div>
-                    <!-- <div class="input-group form-group col-xs-8 col-sm-6 col-md-6">
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-education new-grade-icon"></span>
-                            </span> -->
                             <input type="hidden" class="form-control new-id" placeholder="Student Grade">
-                    <!-- </div> -->
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger update-student-button">Confirm</button>
@@ -112,7 +107,6 @@
 </div>
 
     <script>
-        // Initialize Firebase
         var config = {
             apiKey: "AIzaSyCeV4T5FyOYiYL_BxmsP4GkX7Q9f26Jwlw",
             authDomain: "sgt-database.firebaseapp.com",
@@ -123,7 +117,6 @@
         };
         firebase.initializeApp(config);
         const db = firebase.database();
-        // db.settings({ timeStampsInSnapshots: true });
     </script>
     <script src="script.js"></script>
 </body>

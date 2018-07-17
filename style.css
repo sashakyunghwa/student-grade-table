@@ -158,6 +158,13 @@
 }
 
 
+@media screen and (max-width: 450px) {
+    .modal-title {
+        font-size: 18px; 
+    } 
+}
+
+
 @media screen and (min-width: 470px) {
     .grade-table-text {
         font-size: 12px; 

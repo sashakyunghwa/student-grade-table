@@ -1,3 +1,7 @@
+.student-grade-table-text {
+    color: #333;
+}
+
 .label-default {
     background-color: #3e3f3a;
 }
@@ -43,27 +47,71 @@
     background-color: #325d88;
 }
 
+.new-id {
+    display: none; 
+}
+
 @media screen and (min-width: 320px) {
     .student-grade-table-text {
-        font-size: 17px;
-    }
+        font-size: 14px;
+        padding-left: 30px; 
+        vertical-align: top;
+     }
+     .pull-right {
+         padding-right: 31px;
+     }
+
     #grade-average-text {
-        font-size: 13px;
+        font-size: 11px;
     }
     #add-student-text {
-        font-size: 16px;
+        font-size: 14px;
     }
     .grade-table-text {
         font-size: 10px;
+    }
+ 
+    .student-list-container {
+        margin-top: 15px;
+    }
+
+    .btn-primary {
+        margin-bottom: 4px;
+    }
+
+    .left-side-header {
+        text-align: left;
+    }
+    .right-side-header {
+        text-align: left;
+    }
+    td:first-child {
+        text-align: left;
+    }
+    td:first-child + td {
+        text-align: left;
+    }
+
+    td:nth-child(3) {
+        text-align: left;
+    }
+    td:nth-child(4) {
+        text-align: left;
     }
 }
 
 @media screen and (max-width: 320px) {
     .student-grade-table-text {
-        font-size: 17px;
-    }
+        font-size: 14px;
+        padding-left: 30px; 
+        vertical-align: top;
+     }
+     .pull-right {
+         padding-right: 31px;
+     }
+
     #grade-average-text {
-        font-size: 13px;
+        font-size: 11px;
     }
     #add-student-text {
         font-size: 16px;
@@ -71,19 +119,128 @@
     .grade-table-text {
         font-size: 10px;
     }
+ 
+    .student-list-container {
+        margin-top: 15px;
+    }
+
+    .btn-primary {
+        margin-bottom: 4px;
+    }
+
+    .left-side-header {
+        text-align: left;
+    }
+    .right-side-header {
+        text-align: left;
+    }
+    td:first-child {
+        text-align: left;
+    }
+    td:first-child + td {
+        text-align: left;
+    }
+
+    td:nth-child(3) {
+        text-align: left;
+    }
+    td:nth-child(4) {
+        text-align: left;
+    }
 }
 
 @media screen and (min-width: 360px) {
     .student-grade-table-text {
-        font-size: 19px;
+        font-size: 16px;
     }
     #grade-average-text {
-        font-size: 14px;
+        font-size: 12px;
     }
     #add-student-text {
-        font-size: 18px;
+        font-size: 16px;
     }
     .grade-table-text {
         font-size: 11px;
     }
 }
+
+
+@media screen and (min-width: 470px) {
+    .grade-table-text {
+        font-size: 12px; 
+    } 
+}
+
+@media screen and (min-width: 509px) {
+    .form-control {
+        height: 46px;
+        padding: 12px 16px;
+    }
+    .btn-success {
+        height: 50px;
+    }
+    .student-list-container {
+        margin-top: 40px;
+    }
+    .btn-primary {
+        margin-right: 2vw;
+        vertical-align: top;
+    }
+}
+
+
+@media screen and (min-width: 587px) {
+    .grade-table-text {
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .student-grade-table-text {
+       font-size: 30px;
+       padding-left: 30px; 
+    }
+    .pull-right {
+        padding-right: 31px;
+    }
+    #grade-average-text {
+        font-size: 18px;
+    }
+    #add-student-text {
+        font-size: 18px;
+    }
+    .grade-table-text {
+        font-size: 15px;
+    }
+    .left-side-header {
+        text-align: left;
+    }
+    .right-side-header {
+        text-align: left;
+    }
+    td:first-child {
+        text-align: left;
+    }
+    td:first-child + td {
+        text-align: left;
+    }
+
+    td:nth-child(3) {
+        text-align: left;
+    }
+    td:nth-child(4) {
+        text-align: left;
+    }
+    .form-control {
+        height: 46px;
+        padding: 12px 16px;
+    }
+    .student-list-container {
+        margin-top: 40px;
+    }
+    .btn-primary {
+        margin-right: 2vw;
+        vertical-align: top;
+    }
+}
+

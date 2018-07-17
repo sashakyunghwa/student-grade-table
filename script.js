@@ -8,12 +8,12 @@ var database;
 
 function initializeApp(){
     addClickHandlersToElements();
+    getDataFromFirebase();
 }
 
 function addClickHandlersToElements(){
     $('#add').on('click', handleAddClicked);
     $('.btn-default').on('click', handleCancelClick);
-    $('#getData').on('click', handleGetDataClick);
 }
 
 function handleAddClicked(event){
@@ -86,14 +86,11 @@ function updateStudentList(array){
 
 function updateStudent(studentObj){
     $('#updateModal').modal('show');
-    studentObj.name = $('.new-name').val(studentObj.name);
-    studentObj.course = $('.new-course').val(studentObj.course);
-    studentObj.grade = $('.new-grade').val(studentObj.grade);
-    var studentObj = {};
-    console.log(studentObj);
-    student_array.push(studentObj);
-    $('.update-student-button').click(getDataFromFirebase());
-    $('#updateModal').modal('hide');
+    $('.new-name').val(studentObj.name);
+    $('.new-course').val(studentObj.course);
+    $('.new-grade').val(studentObj.grade);
+    $('.new-id').val(studentObj.id);
+    $('.update-student-button').click(setDataFromFirebase);
 }
 
 function calculateGradeAverage(array){
@@ -108,7 +105,7 @@ function calculateGradeAverage(array){
 function renderGradeAverage(averageGrade){
     $('.avgGrade').text(averageGrade);
 }
-
+ 
 function removeStudent(student){
     var studentIndex = student_array.indexOf(student);
     student_array.splice(studentIndex, 1);
@@ -137,28 +134,34 @@ function handleGetDataClick(){
 }
 
 function getDataFromFirebase(){
-    database = firebase.database().ref().child("Students");
+    database = firebase.database().ref("Students");
     studentData = database.on("value", snap => { 
         console.log(snap.val());
-        return snap.val();
+        studentDataArray = snap.val();
+        handleGetDataClick();
     });
 }
 
-function handleGetDataClick(){
-    // database = firebase.database().ref().child("Students");
-    // studentData = database.on("child_added", snap => {
-    // console.log(snap.val());
-    // return database;
-    // getDataFromFirebase();
+function setDataFromFirebase(){
+    var studentObj = {};
+    studentObj.name = $('.new-name').val();
+    studentObj.course = $('.new-course').val();
+    studentObj.grade = $('.new-grade').val();
+    studentObj.id = $('.new-id').val();
+    firebase.database().ref("Students/" + studentObj.id).set({
+        name: studentObj.name,    
+        course: studentObj.course,
+        grade: studentObj.grade
+    });
+    $('#updateModal').modal('hide');
+} 
 
-   
-    // var name = snap.child("Name").val();
-    // var course = snap.child("Course").val();
-    // var grade = snap.child("Grade").val();
-    studentDataArray = studentData;
-    for(var i = 0; i < studentDataArray.length; i++){
-        console.log('student objects:', studentDataArray[i]);
-        student_array.push(studentDataArray[i]);
+function handleGetDataClick(){
+    student_array = [];
+    for(var id in studentDataArray){
+        console.log('student objects:', studentDataArray[id]);
+        studentDataArray[id].id = id;
+        student_array.push(studentDataArray[id]);
     };
     updateStudentList(student_array);
 }

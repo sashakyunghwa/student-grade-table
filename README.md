@@ -1,6 +1,6 @@
 # Student Grade Table
 
-A content management system that allows users to create, read, and delete student data from the database and see the cumulative grade average.
+A content management system that allows users to add, update, and delete student data from the database and see the cumulative grade average.
 
 #### Features
 

@@ -1,6 +1,6 @@
 # Student Grade Table
 
-A content management system that allows users to add, update, and delete student data from the database and see the cumulative grade average.
+A content management system that allows users to add, update, and delete student data from the Firebase database and see the cumulative grade average.
 
 #### Features
 
@@ -13,6 +13,7 @@ A content management system that allows users to add, update, and delete student
 
 - JavaScript
 - JQuery
+- ES5
 - Firebase
 - HTML5
 - CSS3

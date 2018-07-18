@@ -23,22 +23,39 @@
     </div>
     <div class="student-add-form pull-left col-lg-3 form-group">
         <h4 id="add-student-text"><strong>Add Student</strong></h4>
-        <div class="input-group form-group col-xs-12 col-md-12 student-name">
+        <div class="input-group form-group form-input-1 col-xs-12 col-md-12 student-name">
             <span class="input-group-addon">
-                <span class="glyphicon glyphicon-user student-icon"></span>
+                <span class="glyphicon glyphicon-user student-icon" data-toggle="popover" data-placement="bottom" data-content="Please input a valid name" data-original-title="" title=""></span>
+                <!-- <div class="popover fade bottom in" role="tooltip" id="popover94991" style="top: 30px; left: -71.5px; display: block;">
+                    <div class="arrow" style="left: 50%;"></div>
+                    <h3 class="popover-title" style="display: none;"></h3>
+                    <div class="popover-content">Please input a valid name</div>
+                </div> -->
             </span>
             <input type="text" class="form-control student-input" name="studentName" id="studentName" placeholder="Student Name">
         </div>
-        <div class="input-group form-group col-xs-12 col-md-12 course-name">
+        <div class="input-group form-group form-input-2 col-xs-12 col-md-12 course-name">
             <span class="input-group-addon">
-                <span class="glyphicon glyphicon-list-alt course-icon"></span>
+                <!-- <span class="glyphicon glyphicon-list-alt course-icon"></span> -->
+                <span class="glyphicon glyphicon-list-alt course-icon" data-toggle="popover" data-placement="bottom" data-content="Please input a valid course" data-original-title="" title=""></span>
+                <!-- <div class="popover fade bottom in" role="tooltip" id="popover662237" style="top: 30px; left: -71.5px; display: block;">
+                    <div class="arrow" style="left: 50%;"></div>
+                    <h3 class="popover-title" style="display: none;"></h3>
+                    <div class="popover-content">Please input a valid course</div>
+                </div> -->
             </span>
             <input type="text" class="form-control course-input" name="course" id="course"
                    placeholder="Student Course">
         </div>
-        <div class="input-group form-group col-xs-12 col-md-12 student-grade">
+        <div class="input-group form-group form-input-3 col-xs-12 col-md-12 student-grade">
             <span class="input-group-addon">
-                <span class="glyphicon glyphicon-education grade-icon"></span>
+                <!-- <span class="glyphicon glyphicon-education grade-icon"></span> -->
+                <span class="glyphicon glyphicon-education grade-icon" data-toggle="popover" data-placement="bottom" data-content="Please input a valid grade" data-original-title="" title=""></span>
+                    <!-- <div class="popover fade bottom in" role="tooltip" id="popover926848" style="top: 30px; left: -71.5px; display: block;">
+                        <div class="arrow" style="left: 50%;"></div>
+                        <h3 class="popover-title" style="display: none;"></h3>
+                        <div class="popover-content">Please input a valid grade</div>
+                    </div> -->
             </span>
             <input type="text" class="form-control grade-input" name="studentGrade" id="studentGrade"
                    placeholder="Student Grade">
@@ -77,25 +94,28 @@
                     <h2 class="modal-title text-center">Update Student Information</h2>
                 </div>
                 <div class="modal-body text-center">
-                    <div class="modal-input input-group form-group col-xs-8 col-sm-6 col-md-6 first">
+                    <div class="modal-input input-group form-group form-input-1 col-xs-8 col-sm-6 col-md-6 first">
                         <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-user new-student-icon"></span>
+                            <!-- <span class="glyphicon glyphicon-user new-student-icon"></span> -->
+                            <span class="glyphicon glyphicon-user new-student-icon" data-toggle="popover" data-placement="bottom" data-content="Please input a valid name"></span>
                         </span>
                         <input type="text" class="form-control new-name" placeholder="Student Name">
                     </div>
-                    <div class="modal-input input-group form-group col-xs-8 col-sm-6 col-md-6">
+                    <div class="modal-input input-group form-group form-input-2 col-xs-8 col-sm-6 col-md-6">
                             <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-list-alt new-course-icon"></span>
+                                <!-- <span class="glyphicon glyphicon-list-alt new-course-icon"></span> -->
+                                <span class="glyphicon glyphicon-list-alt new-course-icon" data-toggle="popover" data-placement="bottom" data-content="Please input a valid course"></span>
                             </span>
                             <input type="text" class="form-control new-course" placeholder="Student Course">
                     </div>
-                    <div class="modal-input input-group form-group col-xs-8 col-sm-6 col-md-6">
+                    <div class="modal-input input-group form-group form-input-3 col-xs-8 col-sm-6 col-md-6">
                             <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-education new-grade-icon"></span>
+                                <!-- <span class="glyphicon glyphicon-education new-grade-icon"></span> -->
+                                <span class="glyphicon glyphicon-education new-grade-icon" data-toggle="popover" data-placement="bottom" data-content="Please input a valid grade"></span>
                             </span>
                             <input type="text" class="form-control new-grade" placeholder="Student Grade">
                     </div>
-                            <input type="hidden" class="form-control new-id" placeholder="Student Grade">
+                            <input type="hidden" class="form-control new-id" placeholder="Student ID">
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger update-student-button">Confirm</button>

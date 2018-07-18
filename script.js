@@ -14,6 +14,7 @@ function initializeApp(){
 function addClickHandlersToElements(){
     $('#add').on('click', handleAddClicked);
     $('.btn-default').on('click', handleCancelClick);
+    $('input').on('keypress', hidePopover);
 }
 
 function handleAddClicked(event){
@@ -22,23 +23,121 @@ function handleAddClicked(event){
 
 function handleCancelClick(){
     clearAddStudentFormInputs();
+    clearPopover();
 }
 
-function addStudent(){
-    var student = {};
-    student.name = $('#studentName').val();
-    student.course = $('#course').val();
-    student.grade = $('#studentGrade').val();
-    console.log(student);
-    student_array.push(student);
-    clearAddStudentFormInputs();
-    updateStudentList(student_array);
+function hidePopover(){
+    $(this).closest('.form-group').find('[data-toggle]').popover('hide');
 }
+
+function addStudent() {
+    var studentName = $('#studentName').val();
+    var course = $('#course').val();
+    var studentGrade = $('#studentGrade').val();
+    var student = {
+          name:studentName,
+          course:course,
+          grade:studentGrade
+    };
+    var nameValid = null;
+    var courseValid = null;
+    var gradeValid = null;
+
+    if(studentName.length < 2 || studentName === '') {
+          $('.student-icon').popover('show');
+          nameValid = false;
+    } else {
+          $('.student-icon').popover('hide');
+          nameValid = true;
+    }
+
+    if(course.length < 2 || course === '') {
+          $('.course-icon').popover('show');
+          courseValid = false;
+    } else {
+          $('.course-icon').popover('hide');
+          courseValid = true;
+    }
+
+    if(isNaN(studentGrade) || studentGrade === '' || studentGrade > 100) {
+          $('.grade-icon').popover('show');
+          gradeValid = false;
+    } else {
+          $('.grade-icon').popover('hide');
+          gradeValid = true;
+    }
+
+    if(nameValid && courseValid && gradeValid) {
+          student_array.push(student);
+        clearAddStudentFormInputs();
+        updateStudentList(student_array);
+        firebase.database().ref("Students").push({
+            name: student.name,    
+            course: student.course,
+            grade: student.grade
+        });
+    };
+};
+
+function updateStudentCheck(studentObj) {
+    $('#updateModal').modal('show');
+
+    $('.new-student-icon').popover('hide');
+    $('.new-course-icon').popover('hide');
+    $('.new-grade-icon').popover('hide');
+    $('.update-student-button').click(() => { 
+          var newStudentName = $('.new-name').val();
+          var newCourse = $('.new-course').val();
+          var newStudentGrade = $('.new-grade').val();
+
+          var newNameValid = null;
+          var newCourseValid = null;
+          var newGradeValid = null;
+
+          if(newStudentName.length < 2 || newStudentName === '') {
+                $('.new-student-icon').popover('show');
+                newNameValid = false;
+          } else {
+                $('.new-student-icon').popover('hide');
+                newNameValid = true;
+          };
+
+          if(newCourse.length < 2 || newCourse === '') {
+                $('.new-course-icon').popover('show');
+                newCourseValid = false;
+          } else {
+                $('.new-course-icon').popover('hide');
+                newCourseValid = true;
+          };
+
+          if(isNaN(newStudentGrade) || newStudentGrade === '' || newStudentGrade > 100) {
+                $('.new-grade-icon').popover('show');
+                newGradeValid = false;
+          } else {
+                $('.new-grade-icon').popover('hide');
+                newGradeValid = true;
+          };
+
+          if(newNameValid && newCourseValid && newGradeValid) {
+                setDataFromFirebase({
+                    name: newStudentName,
+                    course: newCourse,
+                    grade: newStudentGrade,
+                    id: studentObj.id
+                });
+                $('#updateModal').modal('hide'); 
+          };
+    });
+};
 
 function clearAddStudentFormInputs(){
     $('#studentName').val('');
     $('#course').val('');
     $('#studentGrade').val('');
+}
+
+function clearPopover(){
+    $('.form-group').find('[data-toggle]').popover('hide');
 }
 
 function renderStudentOnDom(studentObj){
@@ -52,7 +151,7 @@ function renderStudentOnDom(studentObj){
         text: 'UPDATE',
         on: {
             click: function(){
-                updateStudent(studentObj);
+                updateStudentCheck(studentObj);
             }    
         }
     });
@@ -90,7 +189,6 @@ function updateStudent(studentObj){
     $('.new-course').val(studentObj.course);
     $('.new-grade').val(studentObj.grade);
     $('.new-id').val(studentObj.id);
-    $('.update-student-button').click(setDataFromFirebase);
 }
 
 function calculateGradeAverage(array){
@@ -111,6 +209,7 @@ function removeStudent(student){
     student_array.splice(studentIndex, 1);
     student.displayRow.remove();
     renderGradeAverage(calculateGradeAverage(student_array));
+    firebase.database().ref("Students/" + student.id).remove();
 }
 
 function handleGetDataClick(){
@@ -122,10 +221,8 @@ function handleGetDataClick(){
         data: {'api_key': 'T5a2qipvnG'
         },
         success: function(data){
-            // console.log("data from server:", data);
             globalData = data;
             for(var i = 0; i < globalData.data.length; i++){
-                // console.log("student objects:", globalData.data[i]);
                 student_array.push(globalData.data[i]);
             };
             updateStudentList(student_array);
@@ -142,12 +239,7 @@ function getDataFromFirebase(){
     });
 }
 
-function setDataFromFirebase(){
-    var studentObj = {};
-    studentObj.name = $('.new-name').val();
-    studentObj.course = $('.new-course').val();
-    studentObj.grade = $('.new-grade').val();
-    studentObj.id = $('.new-id').val();
+function setDataFromFirebase(studentObj){
     firebase.database().ref("Students/" + studentObj.id).set({
         name: studentObj.name,    
         course: studentObj.course,
@@ -165,6 +257,8 @@ function handleGetDataClick(){
     };
     updateStudentList(student_array);
 }
+
+
 
 
 

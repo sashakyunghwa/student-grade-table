@@ -2,6 +2,8 @@
 
 A content management system that allows users to add, update, and delete student data from the Firebase database and see the cumulative grade average.
 
+!['Alt text'](sgt.png)
+
 #### Features
 
 - Ability to add new students to the table and have the grade average update on submit
